@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 	{
 		fprintf(stderr, "Error: needs to be two file names given, only %d given\n",
 				argc - 1);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	FILE *fp1, *fp2;
@@ -20,12 +20,12 @@ int main(int argc, char **argv)
 
 	/* error if can't open one of files */
 	if(fp1 == NULL)
-		fprintf(stderr, "Error: cannot open %s\n", argv);
-	else if(fp2 == NULL)
+		fprintf(stderr, "Error: cannot open %s\n", *argv);
+	if(fp2 == NULL)
 		fprintf(stderr, "Error: cannot open %s\n", argv[1]);
 
 	if(fp1 == NULL || fp2 == NULL)
-		exit(1);
+		exit(EXIT_FAILURE);
 
 	/* what looks like an infinte loop at first glance but the least messy way I think to write
 	 * this */
@@ -52,4 +52,5 @@ int main(int argc, char **argv)
 	/* close two files */
 	fclose(fp1);
 	fclose(fp2);
+	return EXIT_SUCCESS;
 }
