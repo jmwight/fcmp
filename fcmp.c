@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	{
 		fgets(s1, MXLINELEN, fp1);
 		fgets(s2, MXLINELEN, fp2);
-		if(strlen(s1) == 0 || strlen(s2) == 0)
+		if(fgets(s1, MXLINELEN, fp1) == NULL || fgets(s2, MXLINELEN, fp2) == NULL)
 		{
 			fprintf(stdout, "No difference between files\n");
 			break;
